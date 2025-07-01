@@ -5,6 +5,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 import seaborn as sns
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import mean_squared_error
 
 # Load the dataset
 tennis = pd.read_csv('tennis_stats.csv')
@@ -40,3 +42,14 @@ plt.title("Actual vs. Predicted Winnings")
 plt.savefig("actual vs predecited winnings.png")
 plt.show()
 plt.close()
+
+
+
+
+mse = mean_squared_error(outcomes_test2, y_pred2)
+rmse = np.sqrt(mse)
+
+print("Root Mean Squared Error (RMSE):", rmse)
+print("RMSE as a percentage of mean outcomes:", rmse / outcomes_test2.mean())
+
+#as the RMSE 41.6% as a percentage of the mean outcomes, it is not a good metric to use here.
