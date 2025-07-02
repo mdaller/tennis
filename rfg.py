@@ -86,3 +86,13 @@ for name, config in models.items():
 print("\nModel Comparison:")
 results_df = pd.DataFrame(results)
 print(results_df.sort_values(by='Test RMSE'))
+plt.figure(figsize=(10, 6))
+plt.hist(x=y_pred, bins=30, alpha=0.7, label='Predicted Winnings')
+plt.hist(x=y_train, bins=30, alpha=0.7, label='Actual Winnings' color='orange')
+plt.title('Distribution of Predicted vs Actual Winnings')
+plt.xlabel('Winnings')
+plt.ylabel('Frequency') 
+plt.legend()
+plt.savefig("predicted_vs_actual_winnings.png")
+plt.show()
+plt.clf
