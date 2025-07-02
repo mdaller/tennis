@@ -5,6 +5,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error
 import matplotlib.pyplot as plt
 import seaborn as sns
+from sklearn.ensemble import GradientBoostingRegressor
 
 # Load data
 tennis = pd.read_csv('tennis_stats.csv')
@@ -39,7 +40,7 @@ param_grid = {
     'min_samples_split': [2, 5, 10],
 }
 
-grid_search = GridSearchCV(RandomForestRegressor(random_state=42),
+grid_search = GridSearchCV(GradientBoostingRegressor(random_state=42),
                            param_grid, cv=5, scoring='neg_root_mean_squared_error')
 grid_search.fit(X_train_filtered, y_train)
 
